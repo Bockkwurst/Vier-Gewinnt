@@ -1,0 +1,72 @@
+Funktion Main():
+    Initialisiere einen Scanner namens "scanner" für Benutzereingaben
+    Initialisiere ein 6x7 char-Array "board" für das Spielfeld
+
+    Fordere den Benutzer auf, den Namen von Spieler 1 einzugeben und speichere ihn in "playerOneName"
+    Fordere den Benutzer auf, den Namen von Spieler 2 einzugeben und speichere ihn in "playerTwoName"
+
+    Zeige das leere Spielfeld an
+    Solange wahr:
+        SpielerOneMove(board, scanner, 'X', playerOneName)
+        Wenn isGameFinished(board, playerOneName, playerTwoName) ist wahr, dann breche ab
+
+        Zeige das Spielfeld an
+        SpielerTwoMove(board, scanner, 'O', playerTwoName)
+        Wenn isGameFinished(board, playerOneName, playerTwoName) ist wahr, dann breche ab
+
+    Schließe den Scanner
+
+Funktion SpielerOneMove(board, scanner, symbol, playerOneName):
+    Solange wahr:
+        Fordere Spieler 1 auf, einen Zug zu machen
+        Lies die Benutzereingabe in "userInput"
+        Wenn isValidMove(board, userInput) ist wahr, dann breche die Schleife ab
+        Andernfalls:
+            Gib eine Fehlermeldung aus
+
+    Platziere den Spielstein "X" auf dem Spielfeld an der ausgewählten Position
+
+Funktion SpielerTwoMove(board, scanner, symbol, playerTwoName):
+    Solange wahr:
+        Fordere Spieler 2 auf, einen Zug zu machen
+        Lies die Benutzereingabe in "userInput"
+        Wenn isValidMove(board, userInput) ist wahr, dann breche die Schleife ab
+        Andernfalls:
+            Gib eine Fehlermeldung aus
+
+    Platziere den Spielstein "O" auf dem Spielfeld an der ausgewählten Position
+
+Funktion printBoard(board):
+    Zeige das Spielfeld in der Konsole an
+
+Funktion placeMove(board, position, symbol):
+    Wandele die Position in die entsprechende Spalte "col" um
+    Durchlaufe die Reihen von unten nach oben in dieser Spalte
+    Platziere das Symbol in der ersten leeren Zelle der ausgewählten Spalte
+
+Funktion isValidMove(board, position):
+    Wandele die Position in die entsprechende Spalte "col" um
+    Überprüfe, ob es in der ausgewählten Spalte noch freie Zellen nach oben gibt
+    Gib true zurück, wenn es noch freie Zellen gibt, andernfalls false
+
+Funktion isGameFinished(board, playerOneName, playerTwoName):
+    Wenn ein Spieler mit "X" gewinnt:
+        Zeige das Spielfeld an
+        Gib aus, dass Spieler 1 (playerOneName) gewonnen hat
+        Gib true zurück
+
+    Wenn ein Spieler mit "O" gewinnt:
+        Zeige das Spielfeld an
+        Gib aus, dass Spieler 2 (playerTwoName) gewonnen hat
+        Gib true zurück
+
+    Wenn das Spielfeld voll ist:
+        Zeige das Spielfeld an
+        Gib aus, dass das Spiel unentschieden ist
+        Gib true zurück
+
+    Andernfalls gib false zurück
+
+Funktion wins(board, symbol):
+    Durchlaufe das Spielfeld und überprüfe horizontal und vertikal nach 4 aufeinanderfolgenden Symbolen
+    Gib true zurück, wenn 4 Symbole in einer Zeile oder Spalte gefunden werden, andernfalls false
